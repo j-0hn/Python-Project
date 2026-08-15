@@ -13,24 +13,43 @@ option = 0
 #To check the PIN if Correct
 pin = input("Enter your PIN: ")
 
-if len(str(pin)) != 4:
+if len(str(pin)) != 4 or len(str(pin)) > 4:
         print("PIN must be 4 digits!")
-        pin = int(input("Enter again : "))   
-elif pin.isdigit():
-        print("PIN must be numeric!")
-
-        while myPin != pin:
+        while myPin != int(pin):
            print("\nWrong PIN!")
-           pin = int(input("Re-Enter PIN:"))
+           pin = input("Re-Enter PIN: ")
         
            attempCount += 1
-           print(f"Attempt(s): {attempCount}")
+           print(f"\nAttempt(s): {attempCount}")
+           if attempCount > 2:
+              break
+        
+elif not pin.isdigit():
+        print("Please Input Numbers only!")
+        while myPin != int(pin):
+           print("\nWrong PIN!")
+           pin = input("Re-Enter PIN: ")
+        
+           attempCount += 1
+           print(f"\nAttempt(s): {attempCount}")
+           if attempCount > 2:
+              break
+elif pin.isdigit() and len(str(pin)) == 4:
+        
+        while myPin != int(pin):
+           print("\nWrong PIN!")
+           pin = input("Re-Enter PIN: ")
+        
+           attempCount += 1
+           print(f"\nAttempt(s): {attempCount}")
            if attempCount > 2:
               break
 else:
         print("Remember your PIN!")
 
-if myPin == pin:
+
+
+if myPin == int(pin):
     print("Login Successful!\n")
 
     while option != 4:
@@ -42,7 +61,9 @@ if myPin == pin:
         option = int(input("Choose an option: "))
         if option == 1:
                 print(f"\n**** CHECK BALANCE ****\nYour Balance is $ {myBalance}")
-                print("Please Deposit in your account!\n")
+                if myBalance <= 0 or myBalance <= 100:
+                    print("Please Deposit in your account!\n")
+                else: print("Thank you for Banking with us!\n")
 
         elif option == 2:
                 print("\n**** DEPOSIT ****")

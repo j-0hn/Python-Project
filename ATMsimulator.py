@@ -4,11 +4,11 @@ print("====================\n")
 
 myPin = 1234
 attemptCount = 0
-
 myBalance = 0
 depositCash = 0
 withdrawCash = 0
 option = 0
+
 
 #To check the PIN if Correct
 pin = input("Enter your PIN: ")
@@ -74,5 +74,5 @@ while attemptCount < 3:
                 elif option == 4:
                         print("\nGOODBYE! Thank you!")
                         break
-        else:
-                print("Attempts Exceeded!")
+        
+print("Attempts Exceeded!")

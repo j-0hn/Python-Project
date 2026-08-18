@@ -10,8 +10,8 @@ withdrawCash = 0
 option = 0
 
 def counter(count):
-        count += 1
-        return count
+    count += 1
+    return count
 
 #To check the PIN if Correct
 pin = input("Enter your PIN: ")
@@ -27,13 +27,13 @@ while attemptCount < 3:
    elif not pin.isdigit():
         print("\nPlease Input Numbers only!")
         pin = input("Re-Enter PIN: ")
-        attemptCount += 1
+        attemptCount = counter(attemptCount)
         print(f"\nAttempt(s): {attemptCount}")
 
    elif myPin != int(pin):
         print("\nWrong PIN!")
         pin = input("Re-Enter PIN: ")
-        attemptCount += 1
+        attemptCount = counter(attemptCount)
         print(f"\nAttempt(s): {attemptCount}")
 
    elif pin.isdigit() and len(pin) == 4:

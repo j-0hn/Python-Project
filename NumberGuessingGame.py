@@ -1,29 +1,30 @@
 import random
 print("\n***** Welcome to the Number Guessing Game! *****\n")
 
-
 attempt = 0
 playAgain = True
-hiddenNumber = random.randint(1, 4)
 
+def getGuess():
+    return int(input("Input your guess number! "))
 
-userGuess = int(input("Input your guess number! "))
+def randomNum():
+    return random.randint(1, 3)
 
+userGuess = getGuess()
 while playAgain: #this means already true
-    
+    hiddenNumber = randomNum()
     while hiddenNumber != userGuess:
-        
-        if hiddenNumber != userGuess:
-            print("Incorrect guess!")
-            attempt += 1
-            userGuess = int(input("Input your guess number! "))
-
+        print("Incorrect guess!")
+        attempt += 1
+        userGuess = getGuess()
     print(f"You Got it! \nAttemp(s): {attempt}")
-    userPlay = input("Enter Y or N: ")
-    print("Play again? Y/N")
+
+    userPlay = input("Play again? Enter Y or N: ")
     if userPlay == "Y" or userPlay == "y":
-        playAgain = True
-        userGuess = int(input("Input your guess number! "))
+        attempt = 0
+        hiddenNumber = randomNum()
+        userGuess = getGuess()
     else:
         playAgain = False
+
 print("Thanks for playing")

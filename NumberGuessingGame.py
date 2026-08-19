@@ -8,7 +8,7 @@ def getGuess():
     return int(input("Input your guess number! "))
 
 def randomNum():
-    return random.randint(1, 3)
+    return random.randint(1, 4)
 
 userGuess = getGuess()
 while playAgain: #this means already true
@@ -19,7 +19,7 @@ while playAgain: #this means already true
         userGuess = getGuess()
     print(f"You Got it! \nAttemp(s): {attempt}")
 
-    userPlay = input("Play again? Enter Y or N: ")
+    userPlay = input("Play again? Press Y or Enter to Exit: ")
     if userPlay == "Y" or userPlay == "y":
         attempt = 0
         hiddenNumber = randomNum()

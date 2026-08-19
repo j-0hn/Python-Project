@@ -7,17 +7,22 @@ varLetters = string.ascii_letters
 varDigits = string.digits
 varSpecialChars = string.punctuation
 
-print(varLetters)
-print(varDigits)
-print(varSpecialChars)
+passWord = []
 
-randomNum = random.randint(0, len(varDigits) - 1)
-print(f"Random number: {randomNum}")
+for randomLetter in range(3):
+    randomLetter = random.choice(varLetters)
+    passWord.append(randomLetter)
+    random.shuffle(passWord)
 
-randomLetter = random.choice(varLetters)
-print(f"Random letter: {randomLetter}")
+for randomNumber in range(4):
+    randomNumber = random.choice(varDigits)
+    passWord.append(randomNumber)
+    random.shuffle(passWord)
 
-randomSpecialChar = random.choice(varSpecialChars)
-print(f"Random special character: {randomSpecialChar}")
+for randomSpecialChar in range(3):
+    randomSpecialChar = random.choice(varSpecialChars)
+    passWord.append(randomSpecialChar)
+    random.shuffle(passWord)
 
-print(f"Password Generator Options: {randomNum}{randomLetter}{randomSpecialChar}")
+print(passWord)
+

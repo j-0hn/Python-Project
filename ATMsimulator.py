@@ -42,7 +42,7 @@ while attemptCount < 3:
         
         if myPin == pin:
 
-           while option != 4:
+           while True:
                 print("1. Check Balance")
                 print("2. Deposit")
                 print("3. Withdraw")

@@ -6,6 +6,7 @@ liquor = [
     "Whiskey",
     "Brandy",
 ]
+stock = [5, 3, 8, 2, 6, 4]
 
 def getMenu():
     print("------------------------------")
@@ -27,7 +28,10 @@ while True:
     if menuOption <= 1 or menuOption <= 8:
         if menuOption == 1:
             print("---> View Inventory <---")
-            print("\n".join(liquor))
+            #to show the list together with stocks list
+            for i in range(len(liquor)):
+                print(f"{liquor[i]} : {stock[i]}")
+
             getMenu()
         elif menuOption == 3:
             add_list = input("Add Stock: ")

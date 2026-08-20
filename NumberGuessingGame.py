@@ -2,7 +2,6 @@ import random
 print("\n***** Welcome to the Number Guessing Game! *****\n")
 
 attempt = 0
-playAgain = True
 
 def getGuess():
     return int(input("Input your guess number! "))
@@ -11,7 +10,7 @@ def randomNum():
     return random.randint(1, 4)
 
 userGuess = getGuess()
-while playAgain: #this means already true
+while True:
     hiddenNumber = randomNum()
     while hiddenNumber != userGuess:
         print("Incorrect guess!")
@@ -25,6 +24,6 @@ while playAgain: #this means already true
         hiddenNumber = randomNum()
         userGuess = getGuess()
     else:
-        playAgain = False
+       break
 
 print("Thanks for playing")

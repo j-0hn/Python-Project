@@ -7,27 +7,36 @@ varLetters = string.ascii_letters
 varDigits = string.digits
 varSpecialChars = string.punctuation
 
-passWord = []
-getRangeLetters = int(input("How many letters do you want in your password? "))
-for randomLetter in range(getRangeLetters):
-    randomLetter = random.choice(varLetters)
-    passWord.append(randomLetter)
-    random.shuffle(passWord)
+passWord_list = []
 
-getRangeDigits = int(input("How many digits do you want in your password? "))
-for randomNumber in range(getRangeDigits):
-    randomNumber = random.choice(varDigits)
-    passWord.append(randomNumber)
-    random.shuffle(passWord)
+def get_input_range():
+    return int(input("How many characters do you want in your password? "))
 
-getRangeSpecialChars = int(input("How many special characters do you want in your password? "))
-for randomSpecialChar in range(getRangeSpecialChars):
-    randomSpecialChar = random.choice(varSpecialChars)
-    passWord.append(randomSpecialChar)
-    random.shuffle(passWord)
+generate = True
 
-finalPassword = "".join(passWord)
-print("\nYour Password is: " + finalPassword)
-print("Total Characters: " + str(len(finalPassword)))
+while generate:
+
+    while True:
+        try:
+            get_range_password = get_input_range()
+            if get_range_password < 4:
+                print("Password must be at least 4 characters long!")
+                
+            elif get_range_password > 8:
+                print("Password must not exceed 8 characters!")
+
+            else:
+                for i in range(get_range_password):
+                    i = random.choice(varLetters + varDigits + varSpecialChars)
+                    passWord_list.append(i)
+
+            random.shuffle(passWord_list)
+            print("\nYour Password is: " + "".join(passWord_list))
+            print("Total Characters: " + str(len("".join(passWord_list))))
+            passWord_list.clear() #this is to clear the list so that it can be used again for another password generation
+            generate = False
+        except ValueError:
+            print("Please enter a valid number!")
+
 print("Please keep your password safe and secure!")
 print("Thank you for using the Password Generator!\n")

@@ -31,12 +31,17 @@ while True:
             #to show the list together with stocks list
             for i in range(len(liquor)):
                 print(f"{liquor[i]} : {stock[i]}")
+            continue
 
-            getMenu()
         elif menuOption == 3:
             add_list = input("Add Stock: ")
+            add_stock = input("How many: ")
             liquor.append(add_list)
-            print("\n".join(liquor))
+            stock.append(add_stock)
+            for i in range(len(liquor)):
+                print(f"{liquor[i]} : {stock[i]}")
+            continue
+
         elif menuOption == 4:
             remove_list = input("Remove Stock: ")
             liquor.remove(remove_list)

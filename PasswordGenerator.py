@@ -38,5 +38,5 @@ while True:
     except ValueError:
         print("Please enter a valid number!")
         
-print("Please keep your password safe and secure!")
+print("\nPlease keep your password safe and secure!")
 print("Thank you for using the Password Generator!\n")

@@ -23,16 +23,21 @@ def get_menu():
 def get_option():
     return int(input("Enter your option: "))
 
+def display_list():
+    for my_liquors, my_stocks in zip(liquor, stock):
+        print(my_liquors, my_stocks)
+
 get_menu()
 menuOption = get_option()
+
+
 
 while True:
     if menuOption <= 1 or menuOption <= 8:
         if menuOption == 1:
             print("\n---> View Inventory <---")
             #to show the list together with stocks list
-            for my_liquors, my_stocks in zip(liquor, stock):
-                print(my_liquors, my_stocks)
+            display_list()
             #for i in range(len(liquor)):
              #   print(f"{liquor[i]} : {stock[i]}")
             menuOption = get_option()
@@ -42,8 +47,7 @@ while True:
             add_stock = input("How many: ")
             liquor.append(add_list)
             stock.append(add_stock)
-            for i in range(len(liquor)):
-                print(f"{liquor[i]} : {stock[i]}")
+            display_list()
             menuOption = get_option()
 
         elif menuOption == 3:
@@ -56,8 +60,7 @@ while True:
                 remove_item = liquor.pop(index)
                 remove_stock = stock.pop(index)
                 print(f"\nYou removed -> {remove_item} : {remove_stock}\n")
-            for liquors, items in zip(liquor, stock):
-                print(liquors, items)
+                display_list()
 
         elif menuOption == 4:
             print("Checking Low Stocks")

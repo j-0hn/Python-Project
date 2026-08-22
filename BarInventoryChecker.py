@@ -4,9 +4,8 @@ liquor = [
     "Rum",
     "Tequila",
     "Whiskey",
-    "Brandy",
 ]
-stock = [5, 3, 8, 2, 6, 4]
+stock = [5, 3, 8, 2, 6]
 
 def get_menu():
     print("------------------------------")
@@ -24,7 +23,6 @@ def get_menu():
 def get_option():
     return int(input("Enter your option: "))
 
-
 get_menu()
 menuOption = get_option()
 
@@ -33,8 +31,10 @@ while True:
         if menuOption == 1:
             print("\n---> View Inventory <---")
             #to show the list together with stocks list
-            for i in range(len(liquor)):
-                print(f"{liquor[i]} : {stock[i]}")
+            for my_liquors, my_stocks in zip(liquor, stock):
+                print(my_liquors, my_stocks)
+            #for i in range(len(liquor)):
+             #   print(f"{liquor[i]} : {stock[i]}")
             menuOption = get_option()
 
         elif menuOption == 2:
@@ -48,14 +48,33 @@ while True:
 
         elif menuOption == 3:
             remove_list = input("Remove Stock: ")
-            
-            liquor.remove(remove_list)
-            print("\n".join(liquor))
+            #i used index() here to get the index of my list
+            if remove_list in liquor:
+                index = liquor.index(remove_list)
+                #pop() it will remove from your list and
+                #and return what you removed
+                remove_item = liquor.pop(index)
+                remove_stock = stock.pop(index)
+                print(f"\nYou removed -> {remove_item} : {remove_stock}\n")
+            for liquors, items in zip(liquor, stock):
+                print(liquors, items)
+
+        elif menuOption == 4:
+            print("Checking Low Stocks")
+            lowest_stock = min(stock)
+            #high_stock = max(stock)
+            for my_liquors, my_stocks in zip(liquor, stock):
+                if lowest_stock == my_stocks:
+                    print(my_liquors, "is the lowest stock" ,my_stocks)
+            menuOption = get_option()
+
+        elif menuOption == 7:
+            break
 
     else: 
         print("Incorrect option!\n")
         get_menu()
         menuOption = get_option()
         
-print("Program closed!")
+print("\n*** Program CLOSDE! ***\n")
 

@@ -67,8 +67,7 @@ while attemptCount < 3:
                         print("3. Withdraw")
                         print("4. Exit")
 
-                        option = input("Choose an option: ")
-                        option = int(option)
+                        option = int(input("Choose an option: "))
                         if option == 1:
                                 myBalance = check_balance(myBalance)
 

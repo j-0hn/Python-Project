@@ -24,15 +24,14 @@ def get_option():
     return int(input("Enter your option: "))
 
 def display_list():
+    #to display list together
     for my_liquors, my_stocks in zip(liquor, stock):
         print(my_liquors, my_stocks)
 
 get_menu()
-menuOption = get_option()
-
-
-
 while True:
+   try:
+    menuOption = get_option()
     if menuOption <= 1 or menuOption <= 8:
         if menuOption == 1:
             print("\n---> View Inventory <---")
@@ -78,6 +77,6 @@ while True:
         print("Incorrect option!\n")
         get_menu()
         menuOption = get_option()
-        
+   except ValueError:
+    print("Please enter a valid number!") 
 print("\n*** Program CLOSDE! ***\n")
-

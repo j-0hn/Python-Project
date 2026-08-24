@@ -8,7 +8,7 @@ drinks = [
     {"name" : "Negroni", "price" : 128},
     {"name" : "Old Fashion", "price" : 128}
 ]
-option = 0
+
 while True:
     try:
         print("1. View list \n2. Order")

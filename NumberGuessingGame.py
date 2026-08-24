@@ -9,21 +9,25 @@ def getGuess():
 def randomNum():
     return random.randint(1, 4)
 
-userGuess = getGuess()
+
 while True:
-    hiddenNumber = randomNum()
-    while hiddenNumber != userGuess:
-        print("Incorrect guess!")
-        attempt += 1
+    try:
         userGuess = getGuess()
-    print(f"You Got it! \nAttemp(s): {attempt}")
-
-    userPlay = input("Play again? Press Y or Enter to Exit: ")
-    if userPlay == "Y" or userPlay == "y":
-        attempt = 0
         hiddenNumber = randomNum()
-        userGuess = getGuess()
-    else:
-       break
+        while hiddenNumber != userGuess:
+            print("Incorrect guess!")
+            attempt += 1
+            userGuess = getGuess()
+            
+        print(f"You Got it! \nAttemp(s): {attempt}")
 
+        userPlay = input("Play again? Press Y or Enter to Exit: ")
+        if userPlay == "Y" or userPlay == "y":
+            attempt = 0
+            hiddenNumber = randomNum()
+            userGuess = getGuess()
+        else:
+            break
+    except ValueError:
+        print("Input valid number!")
 print("Thanks for playing")

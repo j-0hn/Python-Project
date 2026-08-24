@@ -5,8 +5,6 @@ print("====================\n")
 myPin = 1234
 attemptCount = 0
 myBalance = 0
-depositCash = 0
-withdrawCash = 0
 option = 0
 
 def counter(count):

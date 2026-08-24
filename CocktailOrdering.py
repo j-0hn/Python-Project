@@ -31,16 +31,11 @@ while True:
         elif option == 2:
             print("Order when you ready!")
             for index, myDrink in enumerate(drinks, start = 1):
-                my_index = index
-                my_order_name = myDrink["name"]
-                my_order_price = myDrink["price"]
                 print(index, myDrink["name"], myDrink["price"])
-            
-            my_order = int(input("Enter Order: "))
-            print(my_order)
-            print(my_index)
-            if my_index == my_order:
-                print(my_index)
+            choice = int(input("Enter Order: "))
+            my_order = drinks[choice - 1]
+            print("You selected: ", my_order["name"])
+            print("Price is: ", my_order["price"])
 
 
     except ValueError:

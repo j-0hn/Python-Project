@@ -9,7 +9,7 @@ varLetters = string.ascii_letters
 varDigits = string.digits
 varSpecialChars = string.punctuation
 
-passWord = ""
+
 output_label = ""
 label_for_output = ""
 #this function to run window in the center of screen
@@ -23,9 +23,13 @@ def center_window(window, width, height):
 center_window(window, 300, 300)
 
 def get_range():
+    passWord = ""
     password_length = get_input_range.get()
+    for i in range(int(password_length)):
+        passWord += random.choice(varLetters + varDigits + varSpecialChars)
+
     label_for_output.config(text="Your Password is...")
-    output_label.config(text=password_length)
+    output_label.config(text=passWord)
     get_input_range.delete(0, tk.END)
 
 label = tk.Label(window, text="Enter Range Password")

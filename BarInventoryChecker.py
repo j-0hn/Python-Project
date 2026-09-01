@@ -70,6 +70,20 @@ while True:
                     print(my_liquors, "is the lowest stock" ,my_stocks)
             menuOption = get_option()
 
+        elif menuOption == 5:
+            search_item = input("Search Item: ")
+            if search_item in liquor:
+                index = liquor.index(search_item)
+                print(f"{search_item} : {stock[index]}")
+            else:
+                print(f"{search_item} is not in the inventory.")
+            menuOption = get_option()
+
+        elif menuOption == 6:
+            total_items = sum(stock)
+            print(f"Total Items in Stock: {total_items}")
+            menuOption = get_option()
+            
         elif menuOption == 7:
             break
 

@@ -13,6 +13,7 @@ varSpecialChars = string.punctuation
 
 output_label = ""
 label_for_output = ""
+password_length = ""
 #this function to run window in the center of screen
 def center_window(window, width, height):
     #to get the actual pixels of my screen
@@ -28,6 +29,12 @@ def generate_password(length):
     for i in range(int(length)):
         passWord += random.choice(varLetters + varDigits + varSpecialChars)
     return passWord
+
+def auto_generate_password(pword_length):
+    passWord = generate_password(pword_length)  # Default length of 8 characters
+    label_for_output.config(text="Your Password is...")
+    output_label.config(text=passWord, font=("Arial", 20, "bold"))
+
 
 def get_range():
     passWord = ""
@@ -51,6 +58,11 @@ def get_range():
     label_for_output.config(text="Your Password is...")
     output_label.config(text=passWord, font=("Arial", 20, "bold"))
     get_input_range.delete(0, tk.END)
+
+    regenerate_btn = tk.Button(window, text="Regenerate Password", command=lambda: auto_generate_password(regenerate_password))
+    regenerate_btn.pack(pady=5, padx=20)
+
+
 
     #regenerate = messagebox.askyesno("Generate Again?", "Do you want to generate another password?")
     #if regenerate:

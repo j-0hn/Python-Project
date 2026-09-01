@@ -23,6 +23,12 @@ def center_window(window, width, height):
     window.geometry(f"{width}x{height}+{x}+{y}")
 center_window(window, 300, 300)
 
+def generate_password(length):
+    passWord = ""
+    for i in range(int(length)):
+        passWord += random.choice(varLetters + varDigits + varSpecialChars)
+    return passWord
+
 def get_range():
     passWord = ""
     password_length = get_input_range.get()
@@ -38,12 +44,18 @@ def get_range():
         get_input_range.delete(0, tk.END)
         return #stops here if input is invalid
     
-    for i in range(int(password_length)):
-        passWord += random.choice(varLetters + varDigits + varSpecialChars)
+    passWord =generate_password(password_length)
+
+    regenerate_password = password_length
 
     label_for_output.config(text="Your Password is...")
     output_label.config(text=passWord, font=("Arial", 20, "bold"))
     get_input_range.delete(0, tk.END)
+
+    #regenerate = messagebox.askyesno("Generate Again?", "Do you want to generate another password?")
+    #if regenerate:
+     #   label_for_output.config(text="Password: ")
+      #  output_label.config(text="passWord", font=("Arial", 12))
 
 label = tk.Label(window, text="Enter Range Password")
 label.pack(pady=10)

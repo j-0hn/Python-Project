@@ -14,6 +14,7 @@ output_label = ""
 label_for_output = ""
 password_length = ""
 reg_btn = None #this to access the regenerate button in other functions
+copy_btn = None #need to declare as gobal to access the copy button in other functions
 #this function to run window in the center of screen
 def center_window(window, width, height):
     #to get the actual pixels of my screen
@@ -46,6 +47,14 @@ def create_regenerate_btn(regenerate_password):
                         auto_generate_password(regenerate_password))
     reg_btn.pack(pady=5, padx=20)
 
+def copy_password():
+    password = output_label.cget("text")
+
+    if password:
+        window.clipboard_clear()
+        window.clipboard_append(password)
+        window.update()  # keeps clipboard after the app closes
+
 def clear_output():
     output_label.config(text="")
     label_for_output.config(text="")
@@ -53,6 +62,7 @@ def clear_output():
     get_input_range.config(state="normal")
     submit_button.config(text="Done", command=get_range)
     reg_btn.pack_forget()  # Hide the regenerate button when clearing output
+    copy_btn.pack_forget()  # Hide the copy button when clearing output
 
 def get_range():
     password_length = get_input_range.get()
@@ -72,6 +82,13 @@ def get_range():
     create_regenerate_btn(password_length)
     submit_button.config(text="Clear Output", command=clear_output)
     get_input_range.config(state="disabled")
+
+    global copy_btn
+    copy_btn = tk.Button(
+    window,
+    text="Copy Password",
+    command=copy_password)
+    copy_btn.pack(pady=5)
     
 label = tk.Label(window, text="Enter Range Password")
 label.pack(pady=10)

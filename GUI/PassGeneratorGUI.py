@@ -14,6 +14,7 @@ varSpecialChars = string.punctuation
 output_label = ""
 label_for_output = ""
 password_length = ""
+reg_btn = None
 #this function to run window in the center of screen
 def center_window(window, width, height):
     #to get the actual pixels of my screen
@@ -28,16 +29,32 @@ def generate_password(length):
     passWord = ""
     for i in range(int(length)):
         passWord += random.choice(varLetters + varDigits + varSpecialChars)
-    return passWord
-
+    label_for_output.config(text="Your Password is...")
+    output_label.config(text=passWord, font=("Arial", 20, "bold"))
+    get_input_range.delete(0, tk.END)
+   
 def auto_generate_password(pword_length):
     passWord = generate_password(pword_length)  # Default length of 8 characters
     label_for_output.config(text="Your Password is...")
     output_label.config(text=passWord, font=("Arial", 20, "bold"))
+    get_input_range.delete(0, tk.END)
 
+def create_regenerate_btn(regenerate_password):
+    global reg_btn
+    reg_btn = tk.Button(window,
+                        text="Regenerate Password",
+                        command=lambda:
+                        auto_generate_password(regenerate_password))
+    reg_btn.pack(pady=5, padx=20)
+
+def clear_output():
+    output_label.config(text="")
+    label_for_output.config(text="")
+    get_input_range.delete(0, tk.END)
+    submit_button.config(text="Done", command=get_range)
+    reg_btn.pack_forget()  # Hide the regenerate button when clearing output
 
 def get_range():
-    passWord = ""
     password_length = get_input_range.get()
 
     if not password_length.isdigit() or int(password_length) <= 0:
@@ -51,23 +68,12 @@ def get_range():
         get_input_range.delete(0, tk.END)
         return #stops here if input is invalid
     
-    passWord =generate_password(password_length)
-
-    regenerate_password = password_length
-
-    label_for_output.config(text="Your Password is...")
-    output_label.config(text=passWord, font=("Arial", 20, "bold"))
-    get_input_range.delete(0, tk.END)
-
-    regenerate_btn = tk.Button(window, text="Regenerate Password", command=lambda: auto_generate_password(regenerate_password))
-    regenerate_btn.pack(pady=5, padx=20)
-
-
-
-    #regenerate = messagebox.askyesno("Generate Again?", "Do you want to generate another password?")
-    #if regenerate:
-     #   label_for_output.config(text="Password: ")
-      #  output_label.config(text="passWord", font=("Arial", 12))
+    generate_password(password_length)
+    create_regenerate_btn(password_length)
+    #submit_button.config(state=tk.DISABLED)  # Disable the button after successful input
+    #submit_button.pack_forget()  # Hide the button after successful input
+    submit_button.config(text="Clear Output", command=clear_output)
+    
 
 label = tk.Label(window, text="Enter Range Password")
 label.pack(pady=10)

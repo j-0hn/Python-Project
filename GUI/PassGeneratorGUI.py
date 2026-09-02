@@ -14,7 +14,7 @@ varSpecialChars = string.punctuation
 output_label = ""
 label_for_output = ""
 password_length = ""
-reg_btn = None
+reg_btn = None #this to access the regenerate button in other functions
 #this function to run window in the center of screen
 def center_window(window, width, height):
     #to get the actual pixels of my screen
@@ -23,7 +23,7 @@ def center_window(window, width, height):
     x = (screen_width - width) // 2
     y = (screen_height - height) // 2
     window.geometry(f"{width}x{height}+{x}+{y}")
-center_window(window, 300, 300)
+center_window(window, 300, 250)
 
 def generate_password(length):
     passWord = ""
@@ -70,11 +70,8 @@ def get_range():
     
     generate_password(password_length)
     create_regenerate_btn(password_length)
-    #submit_button.config(state=tk.DISABLED)  # Disable the button after successful input
-    #submit_button.pack_forget()  # Hide the button after successful input
     submit_button.config(text="Clear Output", command=clear_output)
     
-
 label = tk.Label(window, text="Enter Range Password")
 label.pack(pady=10)
 
@@ -86,6 +83,7 @@ get_input_range.pack()
 submit_button = tk.Button(window, text="Done", command=get_range)
 submit_button.pack(pady=5, padx=20)
 
+# Label to display the generated password
 label_for_output = tk.Label(window, text="")
 label_for_output.pack()
 output_label = tk.Label(window, text="")

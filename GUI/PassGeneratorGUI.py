@@ -10,7 +10,6 @@ varLetters = string.ascii_letters
 varDigits = string.digits
 varSpecialChars = string.punctuation
 
-
 output_label = ""
 label_for_output = ""
 password_length = ""
@@ -51,6 +50,7 @@ def clear_output():
     output_label.config(text="")
     label_for_output.config(text="")
     get_input_range.delete(0, tk.END)
+    get_input_range.config(state="normal")
     submit_button.config(text="Done", command=get_range)
     reg_btn.pack_forget()  # Hide the regenerate button when clearing output
 
@@ -71,6 +71,7 @@ def get_range():
     generate_password(password_length)
     create_regenerate_btn(password_length)
     submit_button.config(text="Clear Output", command=clear_output)
+    get_input_range.config(state="disabled")
     
 label = tk.Label(window, text="Enter Range Password")
 label.pack(pady=10)

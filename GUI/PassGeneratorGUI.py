@@ -23,7 +23,7 @@ def center_window(window, width, height):
     x = (screen_width - width) // 2
     y = (screen_height - height) // 2
     window.geometry(f"{width}x{height}+{x}+{y}")
-center_window(window, 300, 250)
+center_window(window, 300, 260)
 
 def generate_password(length):
     passWord = ""
@@ -86,9 +86,10 @@ def get_range():
     global copy_btn
     copy_btn = tk.Button(
     window,
-    text="Copy Password",
+    text="Copy",
+    font=("Arial", 10, "bold"),
     command=copy_password)
-    copy_btn.pack(pady=5)
+    copy_btn.pack()
     
 label = tk.Label(window, text="Enter Range Password")
 label.pack(pady=10)

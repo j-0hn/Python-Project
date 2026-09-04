@@ -21,8 +21,8 @@ def get_option():
 
 def display_list():
     #to display list together
-    for item in liquor:
-        print(f"{item['name']}: {item['stock']}")
+    for index, item in enumerate(liquor):
+        print(f"{index + 1}. {item['name']}: {item['stock']}")
 
 get_menu()
 
@@ -41,14 +41,10 @@ while True:
         elif menuOption == 2:
             add_list = input("Add Stock: ")
             add_stock = input("How many: ")
-            #liquor.append({"name": add_list, "stock": int(add_stock)})
 
-            with open("jsonFile/liqour.json", "r") as file:
-                    liquor = json.load(file)
-
-                    liquor.append({
-                        "name": add_list,
-                        "stock": int(add_stock)
+            liquor.append({
+                "name": add_list,
+                "stock": int(add_stock)
                         })
 
             with open("jsonFile/liqour.json", "w") as file:
@@ -61,9 +57,12 @@ while True:
         elif menuOption == 3:
             remove_item = input("Remove Stock: ")
             for index, item in enumerate(liquor):
-                if item['name'] == remove_item:
+                if item['name'] == remove_item or index == int(remove_item) - 1:
                     remove_item = liquor.pop(index)
 
+                with open("jsonFile/liqour.json", "w") as file:
+                                    json.dump(liquor, file, indent=2)
+                                    
             print(f"\nYou removed -> {remove_item['name']}: {remove_item['stock']}\n")
             display_list()
 

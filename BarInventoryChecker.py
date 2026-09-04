@@ -1,13 +1,13 @@
 import json
 
 liquor = [
-    "Vodka",
-    "Gin",
-    "Rum",
-    "Tequila",
-    "Whiskey",
+    {"name": "Vodka", "stock": 5},
+    {"name": "Gin", "stock": 3},
+    {"name": "Rum", "stock": 8},
+    {"name": "Tequila", "stock": 2},
+    {"name": "Whiskey", "stock": 6}
 ]
-stock = [5, 3, 8, 2, 6]
+
 
 def get_menu():
     print("------------------------------")
@@ -27,14 +27,15 @@ def get_option():
 
 def display_list():
     #to display list together
-    for my_liquors, my_stocks in zip(liquor, stock):
-        print(my_liquors, my_stocks)
+    for item in liquor:
+        print(f"{item['name']}: {item['stock']}")
 
 get_menu()
+
 while True:
    try:
     menuOption = get_option()
-    if menuOption <= 1 or menuOption <= 8:
+    if menuOption >= 1 and menuOption <= 7:
         if menuOption == 1:
             print("\n---> View Inventory <---")
             #to show the list together with stocks list
@@ -46,43 +47,39 @@ while True:
         elif menuOption == 2:
             add_list = input("Add Stock: ")
             add_stock = input("How many: ")
-            liquor.append(add_list)
-            stock.append(add_stock)
+            liquor.append({"name": add_list, "stock": int(add_stock)})
             display_list()
             menuOption = get_option()
 
         elif menuOption == 3:
-            remove_list = input("Remove Stock: ")
-            #i used index() here to get the index of my list
-            if remove_list in liquor:
-                index = liquor.index(remove_list)
-                #pop() it will remove from your list and
-                #and return what you removed
-                remove_item = liquor.pop(index)
-                remove_stock = stock.pop(index)
-                print(f"\nYou removed -> {remove_item} : {remove_stock}\n")
-                display_list()
+            remove_item = input("Remove Stock: ")
+            for index, item in enumerate(liquor):
+                if item['name'] == remove_item:
+                    remove_item = liquor.pop(index)
+                    
+            print(f"\nYou removed -> {remove_item['name']}: {remove_item['stock']}\n")
+            display_list()
 
         elif menuOption == 4:
             print("Checking Low Stocks")
-            lowest_stock = min(stock)
+            lowest_stock = min(item['stock'] for item in liquor)
             #high_stock = max(stock)
-            for my_liquors, my_stocks in zip(liquor, stock):
-                if lowest_stock == my_stocks:
-                    print(my_liquors, "is the lowest stock" ,my_stocks)
+            for item in liquor:
+                if item['stock'] == lowest_stock:
+                    print(f"{item['name']} is the lowest stock: {item['stock']}")
             menuOption = get_option()
 
         elif menuOption == 5:
             search_item = input("Search Item: ")
-            if search_item in liquor:
-                index = liquor.index(search_item)
-                print(f"{search_item} : {stock[index]}")
+            if search_item in [item['name'] for item in liquor]:
+                index = next(i for i, item in enumerate(liquor) if item['name'] == search_item)
+                print(f"{search_item} : {liquor[index]['stock']}")
             else:
                 print(f"{search_item} is not in the inventory.")
             menuOption = get_option()
 
         elif menuOption == 6:
-            total_items = sum(stock)
+            total_items = sum(item['stock'] for item in liquor)
             print(f"Total Items in Stock: {total_items}")
             menuOption = get_option()
             

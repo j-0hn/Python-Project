@@ -1,13 +1,7 @@
 import json
 
-liquor = [
-    {"name": "Vodka", "stock": 5},
-    {"name": "Gin", "stock": 3},
-    {"name": "Rum", "stock": 8},
-    {"name": "Tequila", "stock": 2},
-    {"name": "Whiskey", "stock": 6}
-]
-
+with open("jsonFile/liqour.json", "r") as file:
+    liquor = json.load(file)
 
 def get_menu():
     print("------------------------------")
@@ -47,7 +41,12 @@ while True:
         elif menuOption == 2:
             add_list = input("Add Stock: ")
             add_stock = input("How many: ")
-            liquor.append({"name": add_list, "stock": int(add_stock)})
+            #liquor.append({"name": add_list, "stock": int(add_stock)})
+
+            with open("jsonFile/liqour.json", "a") as file:
+                file.write({"name": add_list, "stock": int(add_stock)})
+
+
             display_list()
             menuOption = get_option()
 
@@ -56,7 +55,7 @@ while True:
             for index, item in enumerate(liquor):
                 if item['name'] == remove_item:
                     remove_item = liquor.pop(index)
-                    
+
             print(f"\nYou removed -> {remove_item['name']}: {remove_item['stock']}\n")
             display_list()
 

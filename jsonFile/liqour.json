@@ -1,7 +1,14 @@
 [
-    {"name": "Vodka", "stock": 5},
-    {"name": "Gin", "stock": 3},
-    {"name": "Rum", "stock": 8},
-    {"name": "Tequila", "stock": 2},
-    {"name": "Whiskey", "stock": 6}
+    {
+        "name": "Vodka",
+        "stock": 5
+    },
+    {
+        "name": "Gin",
+        "stock": 10
+    },
+    {
+        "name": "Whiskey",
+        "stock": 8
+    }
 ]

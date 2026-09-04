@@ -1,3 +1,5 @@
+import json
+
 liquor = [
     "Vodka",
     "Gin",

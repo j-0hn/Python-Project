@@ -43,8 +43,16 @@ while True:
             add_stock = input("How many: ")
             #liquor.append({"name": add_list, "stock": int(add_stock)})
 
-            with open("jsonFile/liqour.json", "a") as file:
-                file.write({"name": add_list, "stock": int(add_stock)})
+            with open("jsonFile/liqour.json", "r") as file:
+                    liquor = json.load(file)
+
+                    liquor.append({
+                        "name": add_list,
+                        "stock": int(add_stock)
+                        })
+
+            with open("jsonFile/liqour.json", "w") as file:
+                    json.dump(liquor, file, indent=2)
 
 
             display_list()

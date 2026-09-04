@@ -25,10 +25,10 @@ def display_list():
         print(f"{index + 1}. {item['name']}: {item['stock']}")
 
 get_menu()
-
+menuOption = get_option()
 while True:
    try:
-    menuOption = get_option()
+    
     if menuOption >= 1 and menuOption <= 7:
         if menuOption == 1:
             print("\n---> View Inventory <---")
@@ -59,7 +59,7 @@ while True:
             for index, item in enumerate(liquor):
                 if item['name'] == remove_item or index == int(remove_item) - 1:
                     remove_item = liquor.pop(index)
-
+                
                 with open("jsonFile/liqour.json", "w") as file:
                                     json.dump(liquor, file, indent=2)
                                     
@@ -85,8 +85,10 @@ while True:
             menuOption = get_option()
 
         elif menuOption == 6:
-            total_items = sum(item['stock'] for item in liquor)
+            total_items = sum(item['stock'] 
+            for item in liquor)
             print(f"Total Items in Stock: {total_items}")
+            print(f"Total Item: {len(liquor)}")
             menuOption = get_option()
             
         elif menuOption == 7:

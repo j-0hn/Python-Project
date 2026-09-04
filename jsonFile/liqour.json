@@ -10,5 +10,9 @@
   {
     "name": "Whiskey",
     "stock": 8
+  },
+  {
+    "name": "Cognac",
+    "stock": 7
   }
 ]

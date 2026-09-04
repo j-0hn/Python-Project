@@ -96,6 +96,7 @@ label.pack(pady=10)
 
 # Create an Entry widget for password input
 get_input_range = tk.Entry(window, justify="center")
+get_input_range.bind("<Return>", lambda event: get_range())  # Bind Enter key to trigger get_range
 get_input_range.pack()
 
 # Button to trigger the function

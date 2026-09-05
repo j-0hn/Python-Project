@@ -95,7 +95,6 @@ while True:
         if menuOption == 1:
             print("\n---> View Inventory <---")
             display_list()
-            #menuOption = get_option()
 
         elif menuOption == 2:
             add_item()
@@ -118,7 +117,6 @@ while True:
     else: 
         print("Incorrect option!\n")
         get_menu()
-        menuOption = get_option()
    except ValueError:
     print("Please enter a valid number!") 
 print("\n*** Program CLOSDE! ***\n")

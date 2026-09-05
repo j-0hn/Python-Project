@@ -28,6 +28,19 @@ def check_low_stock():
     for item in liquor:
         if item['stock'] == lowest_stock:
             print(f"{item['name']} is the lowest stock: {item['stock']}")
+
+def search_item():
+    search_item = input("Search Item: ")
+    if search_item in [item['name'] for item in liquor]:
+        index = next(i for i, item in enumerate(liquor) if item['name'] == search_item)
+        print(f"{search_item} : {liquor[index]['stock']}")
+    else:
+        print(f"{search_item} is not in the inventory.")
+    
+
+def write_to_file():
+    with open("jsonFile/liqour.json", "w") as file:
+        json.dump(liquor, file, indent=2)
             
 get_menu()
 menuOption = get_option()
@@ -52,10 +65,7 @@ while True:
                 "stock": int(add_stock)
                         })
 
-            with open("jsonFile/liqour.json", "w") as file:
-                    json.dump(liquor, file, indent=2)
-
-
+            write_to_file()
             display_list()
             menuOption = get_option()
 
@@ -65,9 +75,7 @@ while True:
                 if item['name'] == remove_item or index == int(remove_item) - 1:
                     remove_item = liquor.pop(index)
                 
-                with open("jsonFile/liqour.json", "w") as file:
-                        json.dump(liquor, file, indent=2)
-                                    
+            write_to_file()                        
             print(f"\nYou removed -> {remove_item['name']}: {remove_item['stock']}\n")
             display_list()
 
@@ -76,12 +84,7 @@ while True:
             menuOption = get_option()
 
         elif menuOption == 5:
-            search_item = input("Search Item: ")
-            if search_item in [item['name'] for item in liquor]:
-                index = next(i for i, item in enumerate(liquor) if item['name'] == search_item)
-                print(f"{search_item} : {liquor[index]['stock']}")
-            else:
-                print(f"{search_item} is not in the inventory.")
+            search_item()
             menuOption = get_option()
 
         elif menuOption == 6:

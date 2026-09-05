@@ -20,10 +20,15 @@ def get_option():
     return int(input("Enter your option: "))
 
 def display_list():
-    #to display list together
     for index, item in enumerate(liquor):
         print(f"{index + 1}. {item['name']}: {item['stock']}")
 
+def check_low_stock():
+    lowest_stock = min(item['stock'] for item in liquor)
+    for item in liquor:
+        if item['stock'] == lowest_stock:
+            print(f"{item['name']} is the lowest stock: {item['stock']}")
+            
 get_menu()
 menuOption = get_option()
 while True:
@@ -39,11 +44,11 @@ while True:
             menuOption = get_option()
 
         elif menuOption == 2:
-            add_list = input("Add Stock: ")
+            add_item = input("Add Stock: ")
             add_stock = input("How many: ")
 
             liquor.append({
-                "name": add_list,
+                "name": add_item,
                 "stock": int(add_stock)
                         })
 
@@ -61,18 +66,13 @@ while True:
                     remove_item = liquor.pop(index)
                 
                 with open("jsonFile/liqour.json", "w") as file:
-                                    json.dump(liquor, file, indent=2)
+                        json.dump(liquor, file, indent=2)
                                     
             print(f"\nYou removed -> {remove_item['name']}: {remove_item['stock']}\n")
             display_list()
 
         elif menuOption == 4:
-            print("Checking Low Stocks")
-            lowest_stock = min(item['stock'] for item in liquor)
-            #high_stock = max(stock)
-            for item in liquor:
-                if item['stock'] == lowest_stock:
-                    print(f"{item['name']} is the lowest stock: {item['stock']}")
+            check_low_stock()
             menuOption = get_option()
 
         elif menuOption == 5:

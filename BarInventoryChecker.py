@@ -23,6 +23,21 @@ def display_list():
     for index, item in enumerate(liquor):
         print(f"{index + 1}. {item['name']}: {item['stock']}")
 
+def remove_item():
+    remove_item = input("Remove Stock: ")
+    for index, item in enumerate(liquor):
+        if item['name'] == remove_item or (remove_item.isdigit() and index == (int(remove_item) - 1)):
+            remove_item = liquor.pop(index)
+            break  
+    else:
+        print(f"{remove_item} is not in the inventory.")
+        return
+
+    write_to_file() 
+    print(f"\nYou removed -> {remove_item['name']}: {remove_item['stock']}\n")
+    
+    
+
 def check_low_stock():
     lowest_stock = min(item['stock'] for item in liquor)
     for item in liquor:
@@ -36,7 +51,12 @@ def search_item():
         print(f"{search_item} : {liquor[index]['stock']}")
     else:
         print(f"{search_item} is not in the inventory.")
-    
+
+def total_items():
+    total_items = sum(item['stock'] 
+    for item in liquor)
+    print(f"Total Items in Stock: {total_items}")
+    print(f"Total Item: {len(liquor)}")
 
 def write_to_file():
     with open("jsonFile/liqour.json", "w") as file:
@@ -70,14 +90,9 @@ while True:
             menuOption = get_option()
 
         elif menuOption == 3:
-            remove_item = input("Remove Stock: ")
-            for index, item in enumerate(liquor):
-                if item['name'] == remove_item or index == int(remove_item) - 1:
-                    remove_item = liquor.pop(index)
-                
-            write_to_file()                        
-            print(f"\nYou removed -> {remove_item['name']}: {remove_item['stock']}\n")
+            remove_item()
             display_list()
+            menuOption = get_option()
 
         elif menuOption == 4:
             check_low_stock()
@@ -88,10 +103,7 @@ while True:
             menuOption = get_option()
 
         elif menuOption == 6:
-            total_items = sum(item['stock'] 
-            for item in liquor)
-            print(f"Total Items in Stock: {total_items}")
-            print(f"Total Item: {len(liquor)}")
+            total_items()
             menuOption = get_option()
             
         elif menuOption == 7:

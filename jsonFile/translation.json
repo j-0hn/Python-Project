@@ -1,4 +1,4 @@
-translations = [
+[
     {"english": "hello", "chinese": "你好", "pinyin": "nǐ hǎo"},
     {"english": "good morning", "chinese": "早上好", "pinyin": "zǎo shang hǎo"},
     {"english": "good afternoon", "chinese": "下午好", "pinyin": "xià wǔ hǎo"},
@@ -23,5 +23,5 @@ translations = [
     {"english": "I understand", "chinese": "我明白了", "pinyin": "wǒ míng bai le"},
     {"english": "how much is it?", "chinese": "多少钱？", "pinyin": "duō shǎo qián?"},
     {"english": "I would like some water", "chinese": "我想要一些水", "pinyin": "wǒ xiǎng yào yì xiē shuǐ"},
-    {"english": "one moment please", "chinese": "请稍等", "pinyin": "qǐng shāo děng"},
+    {"english": "one moment please", "chinese": "请稍等", "pinyin": "qǐng shāo děng"}
 ]

@@ -1,4 +1,5 @@
 import tkinter as tk
+import json
 
 root = tk.Tk()
 root.title("English to Chinese Translator")
@@ -13,9 +14,12 @@ def center_window(root, width, height):
 center_window(root, 400, 400)
 
 def translate_text(english_text):
+    with open("jsonFile/translation.json", "r") as file:
+        translation = json.load(file)
+
     chinese_text = "haihai"
     output_text.delete("1.0", tk.END)
-    output_text.insert("1.0", chinese_text)
+    output_text.insert("1.0", translation)
 
 label = tk.Label(root, text="Enter English text to translate to Chinese:", font=("Arial", 12))
 label.pack(pady=10)

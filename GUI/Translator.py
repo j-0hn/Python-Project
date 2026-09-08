@@ -1,5 +1,7 @@
 import tkinter as tk
+from tkinter import messagebox
 import json
+
 
 root = tk.Tk()
 root.title("English to Chinese Translator")
@@ -11,7 +13,7 @@ def center_window(root, width, height):
     x = (screen_width - width) // 2
     y = (screen_height - height) // 2
     root.geometry(f"{width}x{height}+{x}+{y}")
-center_window(root, 400, 400)
+center_window(root, 400, 450)
 
 def translate_text(english_text):
     with open("jsonFile/translation.json", "r") as file:
@@ -20,21 +22,24 @@ def translate_text(english_text):
     for translation_entry in translation:
         if translation_entry["english"].strip().lower() == english_text.strip().lower():
             translation_chinese = translation_entry["chinese"] + " " + translation_entry["pinyin"] 
-        
-
             output_text.insert("1.0", translation_chinese)
             break
         else:
-            output_text.insert("1.0", "No translation")
-
-    #output_text.delete("1.0", tk.END)
+            messagebox.showwarning("Warning!", "No Translation yet!")
+            input_text.delete("1.0", tk.END)
+            break
     
+
+def clear_output():
+    input_text.delete("1.0", tk.END)
+    output_text.delete("1.0", tk.END)
 
 label = tk.Label(root, text="Enter English text to translate to Chinese:", font=("Arial", 12))
 label.pack(pady=10)
 
 # English Input field
 input_text = tk.Text(root, height=8, width=40)
+input_text.bind("<Return>", lambda event: translate_text(input_text.get("1.0", tk.END)))
 input_text.pack(pady=10)
 
 translate_button = tk.Button(root, text="Translate", command=lambda: translate_text(input_text.get("1.0", tk.END)))
@@ -46,5 +51,9 @@ arrow.pack()
 # Chinese Output Text field
 output_text = tk.Text(root, height=8, width=40)
 output_text.pack(pady=10)
+
+# Clear button
+clear_btn = tk.Button(root, text="Clear", command=clear_output)
+clear_btn.pack()
 
 root.mainloop()

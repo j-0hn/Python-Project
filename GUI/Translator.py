@@ -17,9 +17,18 @@ def translate_text(english_text):
     with open("jsonFile/translation.json", "r") as file:
         translation = json.load(file)
 
-    chinese_text = "haihai"
-    output_text.delete("1.0", tk.END)
-    output_text.insert("1.0", translation)
+    for translation_entry in translation:
+        if translation_entry["english"].strip().lower() == english_text.strip().lower():
+            translation_chinese = translation_entry["chinese"]
+        
+
+            output_text.insert("1.0", translation_chinese)
+            break
+        else:
+            output_text.insert("1.0", "No translation")
+
+    #output_text.delete("1.0", tk.END)
+    
 
 label = tk.Label(root, text="Enter English text to translate to Chinese:", font=("Arial", 12))
 label.pack(pady=10)

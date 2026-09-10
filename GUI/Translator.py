@@ -27,7 +27,7 @@ def translate_text(english_text):
         if translation_entry["english"].strip().lower() == english_text.strip().lower():
 
             translation_chinese = (
-                translation_entry["chinese"] + " " +
+                translation_entry["chinese"] + " \n" +
                 translation_entry["pinyin"]
             )
 

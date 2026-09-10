@@ -1,8 +1,16 @@
+import json
+
 print("------------------------------\n**** Mini Expense Tracker ****\n------------------------------" 
 "\n 1. Add Expense" 
 "\n 2. View Expense"
 "\n 3. Calculate Expense"
 "\n 4. Exit \n ------------------------------")
+
+expenseTracker = None
+def expense_list():
+    global expenseTracker
+    with open("jsonFile/expenseTracker.json", "r") as file:
+        expenseTracker = json.load(file)
 
 def option():
     print("1. Add, 2. View, 3. Calculate, 4. Exit\n")
@@ -14,13 +22,23 @@ while True:
     num_option = get_option()
 
     if num_option == 1:
-        print("add")
+        print("\n--> Add Expense <--")
+        name = input("Expense name: ")
+        amount = float(input("Amount: "))
+        category = input("Category: ")
+
+
     elif num_option == 2:
-        print("view")
+        print("\n--> View Expense <--")
+        expense_list()
+        if expenseTracker == [] or expenseTracker == {}:
+            print("No Expenses recorded yet!")
+
     elif num_option == 3:
-        print("calculate")
+        print("\n--> Calculate <--")
+        
+
     else:
         break
-
 
 print("Program Closed!")

@@ -51,7 +51,7 @@ while True:
             print("No Expenses recorded yet!")
         else:
             for item in expenseTracker:
-                print(item)
+                print(f"{item['date']}: {item['name']}: {item['amount']}: {item['category']}")
 
     elif num_option == 3:
         print("\n--> Calculate <--")

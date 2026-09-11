@@ -4,5 +4,11 @@
     "amount": 10.9,
     "category": "Daily",
     "date": "2026-09-11"
+  },
+  {
+    "name": "Dinner",
+    "amount": 20.9,
+    "category": "Daily",
+    "date": "2026-09-12"
   }
 ]

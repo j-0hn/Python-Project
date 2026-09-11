@@ -27,6 +27,18 @@ while True:
         amount = float(input("Amount: "))
         category = input("Category: ")
 
+        expense_list()
+        expenseTracker.append({
+            "name": name,
+            "amount": amount,
+            "category": category
+        })
+
+        with open("jsonFile/expenseTracker.json", "w") as file:
+                json.dump(expenseTracker, file, indent=2)
+
+        print("Expense Recorded!")
+
 
     elif num_option == 2:
         print("\n--> View Expense <--")

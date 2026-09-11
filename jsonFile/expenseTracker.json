@@ -1,1 +1,7 @@
-[]
+[
+  {
+    "name": "Lunch",
+    "amount": 10.5,
+    "category": "Daily"
+  }
+]

@@ -1,4 +1,5 @@
 import json
+from datetime import date
 
 print("------------------------------\n**** Mini Expense Tracker ****\n------------------------------" 
 "\n 1. Add Expense" 
@@ -26,12 +27,15 @@ while True:
         name = input("Expense name: ")
         amount = float(input("Amount: "))
         category = input("Category: ")
+        expense_date = date.today().strftime("%Y-%m-%d") #this is ti convert into string before saving into json file
+
 
         expense_list()
         expenseTracker.append({
             "name": name,
             "amount": amount,
-            "category": category
+            "category": category,
+            "date": expense_date
         })
 
         with open("jsonFile/expenseTracker.json", "w") as file:
@@ -45,6 +49,9 @@ while True:
         expense_list()
         if expenseTracker == [] or expenseTracker == {}:
             print("No Expenses recorded yet!")
+        else:
+            for item in expenseTracker:
+                print(item)
 
     elif num_option == 3:
         print("\n--> Calculate <--")

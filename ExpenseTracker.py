@@ -50,6 +50,7 @@ while True:
         if expenseTracker == [] or expenseTracker == {}:
             print("No Expenses recorded yet!")
         else:
+            expenseTracker.sort(key=lambda item: item["date"])
             for item in expenseTracker:
                 print(f"{item['date']}: {item['name']}: {item['amount']}: {item['category']}")
 

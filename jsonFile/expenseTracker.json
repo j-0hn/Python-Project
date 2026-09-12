@@ -9,6 +9,18 @@
     "name": "Dinner",
     "amount": 20.9,
     "category": "Daily",
+    "date": "2026-09-08"
+  },
+  {
+    "name": "Dinner",
+    "amount": 50.1,
+    "category": "Daily",
+    "date": "2026-09-13"
+  },
+  {
+    "name": "Breakfast",
+    "amount": 100.5,
+    "category": "Daily",
     "date": "2026-09-12"
   }
 ]

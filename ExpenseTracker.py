@@ -56,6 +56,9 @@ while True:
 
     elif num_option == 3:
         print("\n--> Calculate <--")
+        expense_list()
+        for item in expenseTracker:
+            print(sum(item['amount']))
         
 
     else:

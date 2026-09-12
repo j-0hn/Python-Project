@@ -8,6 +8,7 @@ print("------------------------------\n**** Mini Expense Tracker ****\n---------
 "\n 4. Exit \n ------------------------------")
 
 expenseTracker = None
+total = 0
 def expense_list():
     global expenseTracker
     with open("jsonFile/expenseTracker.json", "r") as file:
@@ -58,7 +59,8 @@ while True:
         print("\n--> Calculate <--")
         expense_list()
         for item in expenseTracker:
-            print(sum(item['amount']))
+            total += item['amount']
+        print(total)
         
 
     else:

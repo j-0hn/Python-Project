@@ -12,10 +12,11 @@ total = 0
 def expense_list():
     try:
         global expenseTracker
-        with open("jsonFile/expenseTracker.json", "r") as file:
+        with open("jsonFile/expenseTracke.json", "r") as file:
             expenseTracker = json.load(file)
     except FileNotFoundError:
         print("File doesn't exist!")
+        get_option()
 def option():
     print("1. Add, 2. View, 3. Calculate, 4. Exit\n")
 

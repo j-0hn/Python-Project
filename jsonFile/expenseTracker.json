@@ -22,5 +22,11 @@
     "amount": 100.5,
     "category": "Daily",
     "date": "2026-09-12"
+  },
+  {
+    "name": "BrekFAST",
+    "amount": 15.67,
+    "category": "DAILY",
+    "date": "2026-09-14"
   }
 ]

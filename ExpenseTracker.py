@@ -10,10 +10,12 @@ print("------------------------------\n**** Mini Expense Tracker ****\n---------
 expenseTracker = None
 total = 0
 def expense_list():
-    global expenseTracker
-    with open("jsonFile/expenseTracker.json", "r") as file:
-        expenseTracker = json.load(file)
-
+    try:
+        global expenseTracker
+        with open("jsonFile/expenseTracker.json", "r") as file:
+            expenseTracker = json.load(file)
+    except FileNotFoundError:
+        print("File doesn't exist!")
 def option():
     print("1. Add, 2. View, 3. Calculate, 4. Exit\n")
 

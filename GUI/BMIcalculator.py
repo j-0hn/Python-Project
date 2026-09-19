@@ -10,20 +10,33 @@ def center_window(root, width, height):
     x = (screen_width - width) // 2
     y = (screen_height - height) // 2
     root.geometry(f"{width}x{height}+{x}+{y}")
-center_window(root, 400, 400)
+center_window(root, 300, 300)
 
 def calculate():
     weight = float(inputWeight.get())
     height = float(inputHeight.get()) / 100
 
     bmi = weight / (height * height)
-    output_label.config(text=f"{bmi: .1f}")
+    output_label.config(text=f"Your BMI is: {bmi: .1f}")
 
+    calc_button.config(text="Clear", command=clear_button)
+
+    root.focus()
+
+def go_to_height():
+    inputHeight.focus()
+
+def clear_button():
+    inputWeight.delete(0, tk.END)
+    inputHeight.delete(0, tk.END)
+    output_label.config(text="")
+    calc_button.config(text="Calculate", command=calculate)
 
 label_weight = tk.Label(root, text="Weight in (kg)")
 label_weight.pack()
 
 inputWeight = tk.Entry(root)
+inputWeight.bind("<Return>", lambda event: go_to_height())
 inputWeight.pack()
 
 label_height = tk.Label(root, text="Height in (cm)")
@@ -37,10 +50,11 @@ calc_button = tk.Button(root, text="Calculate", command=calculate)
 calc_button.pack()
 
 output_label = tk.Label(root, text="")
-output_label.pack()
+output_label.pack(padx=5, pady=5)
 
+# table showing info of BMI
 table = tk.Frame(root)
-table.pack()
+table.pack(padx=10, pady=10)
 
 label1 = tk.Label(table, text="BMI")
 label1.grid(row=0, column=0)

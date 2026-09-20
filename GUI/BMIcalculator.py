@@ -13,16 +13,22 @@ def center_window(root, width, height):
 center_window(root, 300, 300)
 
 def calculate():
-    weight = float(inputWeight.get())
-    height = float(inputHeight.get()) / 100
+    try:
+        weight = float(inputWeight.get())
+        height = float(inputHeight.get()) / 100
 
-    bmi = weight / (height * height)
-    output_label.config(text=f"Your BMI is: {bmi: .1f}")
+        bmi = weight / (height * height)
+        output_label.config(text=f"Your BMI is: {bmi: .1f}")
 
-    calc_button.config(text="Clear", command=clear_button)
+        calc_button.config(text="Clear", command=clear_button)
 
-    root.focus()
-
+        root.focus()
+    except ValueError:
+        output_label.config(text="Please enter numbers only!")
+        inputWeight.delete(0, tk.END)
+        inputHeight.delete(0, tk.END)
+        inputWeight.focus()
+    
 def go_to_height():
     inputHeight.focus()
 

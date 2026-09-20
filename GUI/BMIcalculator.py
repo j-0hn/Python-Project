@@ -18,9 +18,21 @@ def calculate():
         height = float(inputHeight.get()) / 100
 
         bmi = weight / (height * height)
-        output_label.config(text=f"Your BMI is: {bmi: .1f}")
-
-        calc_button.config(text="Clear", command=clear_button)
+        if bmi < 18.5:
+            output_label.config(text=f"Your BMI is: {bmi: .1f} \nUnderweight")
+            calc_button.config(text="Clear", command=clear_button)
+            
+        elif bmi >= 18.5 and bmi <= 24.9:
+            output_label.config(text=f"Your BMI is: {bmi: .1f} \nNormal weight")
+            calc_button.config(text="Clear", command=clear_button)
+            
+        elif bmi >= 25.0 and bmi <= 29.9:
+            output_label.config(text=f"Your BMI is: {bmi: .1f} \nOverweight")
+            calc_button.config(text="Clear", command=clear_button)
+            
+        else:
+            output_label.config(text=f"Your BMI is: {bmi: .1f} \nObese")
+            calc_button.config(text="Clear", command=clear_button)
 
         root.focus()
     except ValueError:

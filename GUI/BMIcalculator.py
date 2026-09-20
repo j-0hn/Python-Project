@@ -28,6 +28,7 @@ def calculate():
         inputWeight.delete(0, tk.END)
         inputHeight.delete(0, tk.END)
         inputWeight.focus()
+        root.after(3000, lambda: output_label.config(text="")) # to disappear automatically
     
 def go_to_height():
     inputHeight.focus()

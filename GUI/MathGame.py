@@ -17,20 +17,6 @@ def center_app(app, width, height):
     app.geometry(f"{width}x{height}+{x}+{y}")
 center_app(app, 300, 300)
 
-theme_switch = ctk.CTkSwitch(
-    app,
-    text="",
-    switch_width=30,
-    switch_height=16,
-    button_color="gray",
-    button_hover_color="darkgray",
-    command=lambda: ctk.set_appearance_mode(
-        "Dark" if theme_switch.get() else "Light"
-    ),
-)
-theme_switch.pack()
-
-
 
 def answer_entry():
     get_answer = ctk.CTkEntry(app,

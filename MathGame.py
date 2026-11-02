@@ -23,6 +23,12 @@ class Question:
         self.answer = self.num1 / self.num2
         return f"What is {self.num1} / {self.num2} ?"
 
+class Player:
+    def __init__(self, codename, score=0):
+        self.codename = codename
+        self.score = score
+
+
 
 question = Question()
 

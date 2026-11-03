@@ -28,6 +28,10 @@ class Player:
         self.codename = codename
         self.score = score
 
+player_name = Player(input("Enter your codename: "))
+print(f"Welcome {player_name.codename} to the Game! \n")
+print(f"Your current score is: {player_name.score} \n")
+
 
 
 question = Question()
